@@ -1,0 +1,30 @@
+{
+  "name": "doc",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Dominik Kukacka",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.13.3",
+    "connect-livereload": "^0.5.3",
+    "del": "^1.2.0",
+    "event-stream": "^3.3.1",
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-angular-protractor": "0.0.2",
+    "gulp-angular-templatecache": "^1.7.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-live-server": "0.0.23",
+    "gulp-order": "^1.1.1",
+    "gulp-protractor": "^1.0.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.9",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "phantomjs": "^1.9.18",
+    "protractor": "^2.2.0",
+    "require-dir": "^0.3.0"
+  }
+}

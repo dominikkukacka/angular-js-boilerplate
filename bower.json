@@ -1,0 +1,24 @@
+{
+  "name": "doc",
+  "version": "0.0.0",
+  "authors": [
+    "Dominik Kukacka <dominik.kukacka@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-resource": "~1.4.4",
+    "angular-route": "~1.4.4",
+    "angular-mocks": "~1.4.4"
+  },
+  "devDependencies": {
+    "jquery": "~2.1.4"
+  }
+}
