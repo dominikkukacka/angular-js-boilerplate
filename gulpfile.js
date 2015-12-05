@@ -8,6 +8,7 @@ var templateCache = require('gulp-angular-templatecache');
 var eventStream = require('event-stream');
 var KarmaServer = require('karma').Server;
 var angularProtractor = require('gulp-angular-protractor');
+var argv = require('yargs').argv;
 
 var jsFiles = [
   'app/modules/*/models/*.js',
@@ -81,25 +82,6 @@ gulp.task('buildComponents', function () {
     .pipe(gulp.dest('build'));
 });
 
-
-gulp.task('tdd', ['build'], function () {
-
-  var server = gls.new('server/', {env: {NODE_ENV: 'development'}});
-
-  gulp.watch(['server/**/*.js'], function (event) {
-    server.start.apply(server, event);
-  });
-
-  gulp.watch(['app/**/*'], ['unit', 'build']);
-
-  gulp.watch(['build/**/*', 'build/*'], function(file) {
-    server.notify.apply(server, [file]);
-  });
-
-  server.start();
-
-});
-
 gulp.task('watch', ['build'], function () {
 
   var server = gls.new('server/', {env: {NODE_ENV: 'development'}});
@@ -108,7 +90,11 @@ gulp.task('watch', ['build'], function () {
     server.start.apply(server, event);
   });
 
-  gulp.watch(['app/**/*'], ['build']);
+  if(argv.tdd) {
+    gulp.watch(['app/**/*'], ['unit', 'build']);
+  } else {
+    gulp.watch(['app/**/*'], ['build']);
+  }
 
   gulp.watch(['build/**/*', 'build/*'], function(file) {
     server.notify.apply(server, [file]);
@@ -117,7 +103,6 @@ gulp.task('watch', ['build'], function () {
   server.start();
 
 });
-
 
 gulp.task('server', ['build'], function () {
 

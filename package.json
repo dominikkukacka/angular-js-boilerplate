@@ -26,5 +26,8 @@
     "phantomjs": "^1.9.18",
     "protractor": "^2.2.0",
     "require-dir": "^0.3.0"
+  },
+  "dependencies": {
+    "yargs": "^3.31.0"
   }
 }
