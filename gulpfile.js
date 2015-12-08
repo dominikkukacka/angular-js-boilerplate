@@ -9,6 +9,7 @@ var eventStream = require('event-stream');
 var KarmaServer = require('karma').Server;
 var angularProtractor = require('gulp-angular-protractor');
 var argv = require('yargs').argv;
+var sass = require('gulp-sass');
 
 var jsFiles = [
   'app/modules/*/models/*.js',
@@ -35,7 +36,11 @@ var htmlFiles = [
 
   '!app/index.html',
   'app/**/*.html',
-]
+];
+
+var sassFiles = [
+  'app/modules/*/directives/*/src/*.scss',
+];
 
 gulp.task('clean', function() {
   return del([
@@ -49,7 +54,16 @@ gulp.task('copy', function () {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('build', ['clean', 'copy', 'buildComponents'], function () {
+gulp.task('buildCss', function () {
+  gulp.src(sassFiles)
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(concat('build.css'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('build', ['clean', 'copy', 'buildComponents', 'buildCss'], function () {
   var jsStream = gulp
     .src(jsFiles)
     .pipe(order(jsFiles, {

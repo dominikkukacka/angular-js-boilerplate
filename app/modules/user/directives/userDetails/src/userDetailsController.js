@@ -4,7 +4,7 @@
 
   app.controller('UserDetailsController', ['$scope', 'UserDAO', function($scope, UserDAO) {
       $scope.user = null;
-      UserDAO.get(4).then(function(user) {
+      UserDAO.get(1).then(function(user) {
         $scope.user = user;
       }, function(err) {
         $scope.error = err.data;
